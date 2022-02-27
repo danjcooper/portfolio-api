@@ -1,18 +1,13 @@
 const express = require('express');
+const notion = require('./notion');
 const app = express();
-// import { Client } from '@notionhq/client';
-const { Client } = require('@notionhq/client');
 
 require('dotenv').config();
-
-const notion = new Client({ auth: process.env.NOTION_KEY });
 
 app.get('/', async (req, res) => {
   await addItem('Yurts in Big Sur, California');
   res.send('Item added.');
 });
-
-module.exports = app;
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -38,3 +33,5 @@ async function addItem(text) {
     console.error(error.body);
   }
 }
+
+module.exports = app;
