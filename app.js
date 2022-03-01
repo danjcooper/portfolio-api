@@ -9,6 +9,11 @@ app.get('/', async (req, res) => {
   res.send('Item added.');
 });
 
+app.post('/message', async (req, res) => {
+  await addItem('Yurts in Big Sur, California');
+  res.send('Item added.');
+});
+
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 async function addItem(text) {
