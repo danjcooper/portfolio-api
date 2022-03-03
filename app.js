@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 require('dotenv').config();
 
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
   await addItem('Yurts in Big Sur, California');
   res.send('Item added.');
 });
