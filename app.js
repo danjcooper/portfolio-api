@@ -8,10 +8,10 @@ app.use(express.json());
 require('dotenv').config();
 
 app.post('/', async (req, res) => {
-  const { subject, message, signed } = req.body;
+  // const { subject, message, signed } = req.body;
 
   try {
-    await addItem(subject);
+    await addItem(req.body);
     res.status(200).send('Item added.');
   } catch (error) {
     res.status(500).send(e.message);
@@ -25,7 +25,7 @@ app.post('/message', async (req, res) => {
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 
-async function addItem(text) {
+async function addItem({ subject, message, signed }) {
   try {
     const response = await notion.pages.create({
       parent: { database_id: databaseId },
@@ -34,7 +34,25 @@ async function addItem(text) {
           title: [
             {
               text: {
-                content: text,
+                content: subject,
+              },
+            },
+          ],
+        },
+        message: {
+          rich_text: [
+            {
+              text: {
+                content: message,
+              },
+            },
+          ],
+        },
+        from: {
+          rich_text: [
+            {
+              text: {
+                content: signed,
               },
             },
           ],
