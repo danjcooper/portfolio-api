@@ -3,13 +3,13 @@ const notion = require('./notion');
 const cors = require('cors');
 const app = express();
 
+const databaseId = process.env.NOTION_DATABASE_ID;
+
 app.use(cors());
 app.use(express.json());
 require('dotenv').config();
 
 app.post('/', async (req, res) => {
-  // const { subject, message, signed } = req.body;
-
   try {
     await addItem(req.body);
     res.status(200).send('Item added.');
@@ -17,13 +17,6 @@ app.post('/', async (req, res) => {
     res.status(500).send(e.message);
   }
 });
-
-app.post('/message', async (req, res) => {
-  await addItem('Yurts in Big Sur, California');
-  res.send('Item added.');
-});
-
-const databaseId = process.env.NOTION_DATABASE_ID;
 
 async function addItem({ subject, message, signed }) {
   try {
