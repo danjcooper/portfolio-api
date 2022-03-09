@@ -18,8 +18,5 @@ module.exports = class Message {
         reject(error);
       }
     });
-
-    // TODO Return all messages.
-    // const databaseId = '668d797c-76fa-4934-9b05-ad288df2d136';
   }
 };
