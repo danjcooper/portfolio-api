@@ -1,7 +1,7 @@
 const notion = require('../notion');
 require('dotenv').config();
 
-const databaseId = process.env.NOTION_RECIPE_DATABASE_ID;
+const databaseId = process.env.NOTION_INGREDIENTS_DATABASE_ID;
 
 module.exports = class Message {
   constructor(data) {}
@@ -12,8 +12,6 @@ module.exports = class Message {
         const response = await notion.databases.query({
           database_id: databaseId,
         });
-        // console.log(response.results[0].properties.title[0].text.content);
-        // console.log(response);
         resolve(response);
       } catch (error) {
         reject(error);
