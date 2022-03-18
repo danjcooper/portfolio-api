@@ -2,7 +2,6 @@ const notion = require('../notion');
 require('dotenv').config();
 
 const databaseId = process.env.NOTION_INGREDIENTS_DATABASE_ID;
-const pageId = process.env.RANDOM_PAGE_ID;
 
 module.exports = class Message {
   constructor(data) {}
@@ -23,12 +22,11 @@ module.exports = class Message {
   static updateShoppingList(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(data);
         const response = await notion.pages.update({
-          page_id: pageId,
+          page_id: data.page_id,
           properties: {
-            'Manually Add': {
-              checkbox: true,
+            'Picked Up': {
+              checkbox: data.checked,
             },
           },
         });
