@@ -11,16 +11,24 @@ const getAllDepartments = (data) => {
 };
 
 const sortIngredientsByDepartment = (departments, ingredients) => {
-  const output = {};
-  departments.forEach((department) => (output[department] = null));
+  const output = [];
 
   for (let i = 0; i < departments.length; i++) {
+    let departmentInfo = {};
+
+    //Filter all products who are in the department.
     var departmentIngredients = ingredients.filter(
       (ingredient) => ingredient.department === departments[i]
     );
 
-    output[departments[i]] = departmentIngredients;
+    //Add the info to the object.
+    departmentInfo.name = departments[i];
+    departmentInfo.ingredients = departmentIngredients;
+
+    //Push new object into returned array.
+    output.push(departmentInfo);
   }
+
   return output;
 };
 

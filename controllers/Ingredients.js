@@ -1,4 +1,4 @@
-const ingredientsModal = require('../models/Ingredients');
+const ingredientsModal = require('../models/ingredients');
 const { fullUrl } = require('../helpers');
 
 const index = (req, res) => {
