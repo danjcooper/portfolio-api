@@ -79,4 +79,15 @@ module.exports = class Ingredients {
       }
     });
   }
+
+  static async removeAllIngredientsFromBasket() {
+    const allIngredients = await Ingredients.all;
+
+    allIngredients.forEach((ingredient) => {
+      Ingredients.updateShoppingList({
+        page_id: ingredient.id,
+        checked: false,
+      });
+    });
+  }
 };

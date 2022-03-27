@@ -56,4 +56,22 @@ const updateMeals = async (req, res) => {
   }
 };
 
-module.exports = { getAllMeals, updateMeals, getAllMealsByDepartment, index };
+const removeAllFromBasket = (req, res) => {
+  try {
+    const result = ingredientsModal.removeAllIngredientsFromBasket();
+    res.status(200);
+    res.send({ data: result });
+    return;
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+};
+
+module.exports = {
+  getAllMeals,
+  updateMeals,
+  getAllMealsByDepartment,
+  index,
+  removeAllFromBasket,
+};

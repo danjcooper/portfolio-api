@@ -6,5 +6,6 @@ router.get('/', ingredientsController.index);
 router.get('/all', ingredientsController.getAllMeals);
 router.get('/all/byDepartment', ingredientsController.getAllMealsByDepartment);
 router.patch('/update', ingredientsController.updateMeals);
+router.patch('/removeAllFromBasket', ingredientsController.removeAllFromBasket);
 
 module.exports = router;
