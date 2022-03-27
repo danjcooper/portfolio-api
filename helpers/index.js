@@ -9,7 +9,17 @@ const getAllDepartments = (data) => {
 };
 
 const sortIngredientsByDepartment = (departments, ingredients) => {
-  return;
+  const output = {};
+  departments.forEach((department) => (output[department] = null));
+
+  for (let i = 0; i < departments.length; i++) {
+    var departmentIngredients = ingredients.filter(
+      (ingredient) => ingredient.department === departments[i]
+    );
+
+    output[departments[i]] = departmentIngredients;
+  }
+  return output;
 };
 
 const getIngredientNotes = (ingredient) => {

@@ -4,6 +4,7 @@ const {
   getIngredientNotes,
   itemIsInShoppingList,
   getIngredientDepartment,
+  sortIngredientsByDepartment,
 } = require('../helpers');
 require('dotenv').config();
 
@@ -68,10 +69,11 @@ module.exports = class Ingredients {
         });
 
         const departments = getAllDepartments(response.results);
+        const allIngredients = await Ingredients.all;
 
-        console.log(departments);
+        const result = sortIngredientsByDepartment(departments, allIngredients);
 
-        resolve(departments);
+        resolve(result);
       } catch (error) {
         reject(error);
       }
