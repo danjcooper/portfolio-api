@@ -1,3 +1,5 @@
+var url = require('url');
+
 const getAllDepartments = (data) => {
   const output = [];
 
@@ -45,10 +47,19 @@ const getIngredientDepartment = (ingredient) => {
   return ingredient.properties.Department.multi_select[0].name;
 };
 
+function fullUrl(req) {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl,
+  });
+}
+
 module.exports = {
   getAllDepartments,
   sortIngredientsByDepartment,
   getIngredientNotes,
   itemIsInShoppingList,
   getIngredientDepartment,
+  fullUrl,
 };
