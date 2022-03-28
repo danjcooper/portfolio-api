@@ -10,7 +10,7 @@ require('dotenv').config();
 const portfolioRoutes = require('./routes/portfolio');
 app.use('/portfolio', portfolioRoutes);
 
-const ingredientRoutes = require('./routes/ingredients');
-app.use('/ingredients', ingredientRoutes);
+const mealPrepRoutes = require('./routes/mealPrep');
+app.use('/mealPrep', mealPrepRoutes);
 
 module.exports = app;
