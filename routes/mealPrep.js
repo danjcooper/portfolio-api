@@ -6,6 +6,7 @@ const mealsController = require('../controllers/meals');
 router.get('/', ingredientsController.index);
 
 router.get('/meals/all', mealsController.index);
+router.patch('/meals/update', mealsController.updateIsInMealPlan);
 
 router.get('/ingredients/all', ingredientsController.getAllMeals);
 router.get(
