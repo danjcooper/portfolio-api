@@ -6,6 +6,7 @@ const {
   getIngredientDepartment,
   sortIngredientsByDepartment,
   removeDuplicatesFromArray,
+  ingredientIsUsedInRecipe,
 } = require('../helpers');
 require('dotenv').config();
 
@@ -21,6 +22,7 @@ module.exports = class Ingredients {
       (this.inShoppingList = itemIsInShoppingList(data)),
       (this.manuallyAdded = data.properties['Manually Add'].checkbox),
       (this.inShoppingBasket = data.properties['Picked Up'].checkbox);
+    this.isUsedInRecipe = ingredientIsUsedInRecipe(data);
   }
 
   static create(data) {
@@ -98,7 +100,19 @@ module.exports = class Ingredients {
         const allIngredients = await Ingredients.all;
         let result = allIngredients.map((item) => item.department);
         result = removeDuplicatesFromArray(result);
-        console.log(result);
+
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  static get getAllIngredientsNotInARecipe() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let result = await Ingredients.all;
+        result = result.filter((item) => !item.isUsedInRecipe);
         resolve(result);
       } catch (error) {
         reject(error);

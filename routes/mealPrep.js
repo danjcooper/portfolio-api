@@ -14,6 +14,10 @@ router.get(
   ingredientsController.getAllMealsByDepartment
 );
 router.get(
+  '/ingredients/all/notInRecipe',
+  ingredientsController.getAllIngredientsNotInARecipe
+);
+router.get(
   '/ingredients/departments/all',
   ingredientsController.getAllDepartmentNames
 );

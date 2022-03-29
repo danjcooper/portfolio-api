@@ -78,6 +78,15 @@ const getAllDepartmentNames = async (req, res) => {
   }
 };
 
+const getAllIngredientsNotInARecipe = async (req, res) => {
+  try {
+    const result = await ingredientsModal.getAllIngredientsNotInARecipe;
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 module.exports = {
   getAllMeals,
   updateMeals,
@@ -85,4 +94,5 @@ module.exports = {
   index,
   removeAllFromBasket,
   getAllDepartmentNames,
+  getAllIngredientsNotInARecipe,
 };

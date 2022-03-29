@@ -72,6 +72,10 @@ const removeDuplicatesFromArray = (arr) => {
   return output.sort();
 };
 
+const ingredientIsUsedInRecipe = (data) => {
+  return data.properties['Used In'].relation.length > 0 ? true : false;
+};
+
 module.exports = {
   getAllDepartments,
   sortIngredientsByDepartment,
@@ -80,4 +84,5 @@ module.exports = {
   getIngredientDepartment,
   fullUrl,
   removeDuplicatesFromArray,
+  ingredientIsUsedInRecipe,
 };
