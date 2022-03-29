@@ -16,6 +16,6 @@ This API handles the following actions.
 | GET    | /mealprep/ingredients/all              | Retrieve all ingredients and their values                                  |
 | GET    | /mealprep/ingredients/all/byDepartment | Retrieve all ingredients sorted by their department.                       |
 | GET    | /mealprep/ingredients/departments/all  | Retrieve sorted list of departments                                        |
-| GET    | /mealprep/ingredients/all/notInRecipe  | Retrieve all ingredients that would need to be manually added to the list. |
+| GET    | /mealprep/ingredients/notInRecipe      | Retrieve all ingredients that would need to be manually added to the list. |
 
 ## Website messages.
