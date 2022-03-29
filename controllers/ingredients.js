@@ -1,5 +1,6 @@
 const ingredientsModal = require('../models/ingredients');
 const { fullUrl } = require('../helpers');
+const Ingredients = require('../models/ingredients');
 
 const index = (req, res) => {
   const routeInformation = [
@@ -68,10 +69,20 @@ const removeAllFromBasket = (req, res) => {
   }
 };
 
+const getAllDepartmentNames = async (req, res) => {
+  try {
+    const result = await ingredientsModal.getAllDepartmentNames;
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 module.exports = {
   getAllMeals,
   updateMeals,
   getAllMealsByDepartment,
   index,
   removeAllFromBasket,
+  getAllDepartmentNames,
 };

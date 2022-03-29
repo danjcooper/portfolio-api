@@ -5,6 +5,7 @@ const {
   itemIsInShoppingList,
   getIngredientDepartment,
   sortIngredientsByDepartment,
+  removeDuplicatesFromArray,
 } = require('../helpers');
 require('dotenv').config();
 
@@ -88,6 +89,20 @@ module.exports = class Ingredients {
         page_id: ingredient.id,
         checked: false,
       });
+    });
+  }
+
+  static get getAllDepartmentNames() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const allIngredients = await Ingredients.all;
+        let result = allIngredients.map((item) => item.department);
+        result = removeDuplicatesFromArray(result);
+        console.log(result);
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 };

@@ -63,6 +63,15 @@ function fullUrl(req) {
   });
 }
 
+const removeDuplicatesFromArray = (arr) => {
+  let output = [];
+  arr.forEach((item) => {
+    output.indexOf(item) === -1 ? output.push(item) : null;
+  });
+
+  return output.sort();
+};
+
 module.exports = {
   getAllDepartments,
   sortIngredientsByDepartment,
@@ -70,4 +79,5 @@ module.exports = {
   itemIsInShoppingList,
   getIngredientDepartment,
   fullUrl,
+  removeDuplicatesFromArray,
 };

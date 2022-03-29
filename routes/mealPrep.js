@@ -13,6 +13,10 @@ router.get(
   '/ingredients/all/byDepartment',
   ingredientsController.getAllMealsByDepartment
 );
+router.get(
+  '/ingredients/departments/all',
+  ingredientsController.getAllDepartmentNames
+);
 router.patch('/ingredients/update', ingredientsController.updateMeals);
 router.patch(
   '/ingredients/removeAllFromBasket',

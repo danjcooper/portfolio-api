@@ -11,9 +11,10 @@ This API handles the following actions.
 
 ### Usage.
 
-| Method | Endpoint                      | Notes                                                |
-| ------ | ----------------------------- | ---------------------------------------------------- |
-| GET    | /ingredients/all              | Retrieve all ingredients and their values            |
-| GET    | /ingredients/all/byDepartment | retrieve all ingredients sorted by their department. |
+| Method | Endpoint                               | Notes                                                |
+| ------ | -------------------------------------- | ---------------------------------------------------- |
+| GET    | /mealprep/ingredients/all              | Retrieve all ingredients and their values            |
+| GET    | /mealprep/ingredients/all/byDepartment | Retrieve all ingredients sorted by their department. |
+| GET    | /mealprep/ingredients/departments/all  | Retrieve sorted list of departments                  |
 
 ## Website messages.
