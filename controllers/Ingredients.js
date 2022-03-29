@@ -87,6 +87,15 @@ const getAllIngredientsNotInARecipe = async (req, res) => {
   }
 };
 
+const updateIngredientManuallyAdd = async (req, res) => {
+  try {
+    const result = await Ingredients.updateManuallyAddedItem(req.body);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 module.exports = {
   getAllMeals,
   updateMeals,
@@ -95,4 +104,5 @@ module.exports = {
   removeAllFromBasket,
   getAllDepartmentNames,
   getAllIngredientsNotInARecipe,
+  updateIngredientManuallyAdd,
 };

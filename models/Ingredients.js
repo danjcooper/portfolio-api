@@ -119,4 +119,22 @@ module.exports = class Ingredients {
       }
     });
   }
+
+  static async updateManuallyAddedItem(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = notion.pages.update({
+          page_id: data.page_id,
+          properties: {
+            'Manually Add': {
+              checkbox: data.checked,
+            },
+          },
+        });
+        resolve(response);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 };
