@@ -76,6 +76,19 @@ const ingredientIsUsedInRecipe = (data) => {
   return data.properties['Used In'].relation.length > 0 ? true : false;
 };
 
+const getHeaderBlockUpdate = (updatedText) => {
+  return {
+    rich_text: [
+      {
+        type: 'text',
+        text: {
+          content: updatedText,
+        },
+      },
+    ],
+  };
+};
+
 module.exports = {
   getAllDepartments,
   sortIngredientsByDepartment,
@@ -85,4 +98,5 @@ module.exports = {
   fullUrl,
   removeDuplicatesFromArray,
   ingredientIsUsedInRecipe,
+  getHeaderBlockUpdate,
 };
