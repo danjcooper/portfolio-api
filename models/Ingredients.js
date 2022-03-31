@@ -137,4 +137,8 @@ module.exports = class Ingredients {
       }
     });
   }
+
+  static async addIngredientToNotionDatabase(data) {
+    // TODO - Create a way for the client side to add a new item to the database
+  }
 };
